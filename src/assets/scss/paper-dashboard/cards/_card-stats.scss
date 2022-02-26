@@ -1,0 +1,148 @@
+%card-stats{
+  hr{
+    margin: 5px 15px;
+  }
+}
+
+.content{
+  height: 100%;
+  background-image: linear-gradient(to top, #ace0f9 0%, #F4F3EF 100%);
+}
+.blob {
+	background: black;
+	border-radius: 50%;
+	margin-top: -44px;
+  margin-left: 20px;
+	height: 20px;
+	width: 20px;
+
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse{
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}
+
+.blobRed {
+	background: tomato;
+	border-radius: 10px;
+  color:white;
+  font-size: large;
+  margin: 0 auto;
+  padding-top: 33px;
+	height: 100px;
+	width: 400px;
+  text-align: center;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+	animation: pulse1 2s infinite;
+}
+.blobGreen {
+	background: #52C458;
+	border-radius: 10%;
+	margin:10px;
+	height: 100px;
+	width: 100px;
+
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+}
+
+@keyframes pulse1 {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 72, 72, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 50px rgba(255, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+	}
+}
+
+.card-stats{
+  margin-top: 10px;
+    .card-body{
+        padding: 15px 15px 0px;
+
+        .numbers{
+          text-align: center;
+          font-size: 2em;
+
+            p{
+                margin-bottom: 0;
+            }
+            .card-category {
+              color: $dark-gray;
+              font-size: 16px;
+              line-height: 1.4em;
+            }
+        }
+
+        .sensors_data{
+          text-align: center;
+            .water_level{
+              margin-top:20px;
+              margin-bottom: 75px;
+            }
+            .water_flow {
+              
+              margin-bottom: 30px;
+            }
+
+            .water_level_desc{
+              margin-top:20px;
+              font-size: 1.5em;
+
+            }
+            .water_flow_desc{
+              font-size: 1.5em;
+            }
+            .sensor_value{
+              font-size: 1.5em;
+            }
+
+        }
+    }
+    .card-footer{
+        padding: 0px 15px 15px;
+
+        .stats{
+          color: $dark-gray;
+        }
+
+        hr{
+          margin-top: 10px;
+          margin-bottom: 15px;
+        }
+    }
+    .icon-big {
+        font-size: 3em;
+        min-height: 64px;
+
+        i{
+            line-height: 59px;
+        }
+    }
+
+
+}
