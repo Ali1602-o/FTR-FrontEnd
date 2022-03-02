@@ -37,24 +37,24 @@ class Dashboard extends react.Component {
   }
 
   componentDidMount() {
-   
-      fetch("https://api.thingspeak.com/channels/1602992/fields/1.json?api_key=XWR0IS30KYXH9ZZ8&results=1")
+      setInterval(() => fetch("https://api.thingspeak.com/channels/1602992/fields/1.json?api_key=XWR0IS30KYXH9ZZ8&results=1")
         .then((res) => res.json())
         .then((json) => {
             this.setState({
                 waterLevelData: json
             });
-      })
+      }), 20000);
+      
 
     
-      fetch("https://api.thingspeak.com/channels/1602993/fields/2.json?api_key=ON520M6JZRPI7LUA&results=1")
-        .then((res) => res.json())
-        .then((json) => {
-            this.setState({
-                waterFlowData: json,
-                loading: false
-            });
-      })
+      setInterval(() => fetch("https://api.thingspeak.com/channels/1602993/fields/2.json?api_key=ON520M6JZRPI7LUA&results=1")
+          .then((res) => res.json())
+          .then((json) => {
+              this.setState({
+                  waterFlowData: json,
+                  loading: false
+              });
+      }), 20000);
       
   }
 
@@ -107,7 +107,7 @@ class Dashboard extends react.Component {
                           <h6>Water Level : </h6>
                         </div>
                         
-                        {this.state.loading ? <h1>...</h1> :
+                        {this.state.loading ? <span>...</span> :
                           this.state.waterLevelData.feeds.map((item) => (<div>
                           
                           <span className="sensor_value">{item.field1} Km</span>
@@ -131,7 +131,7 @@ class Dashboard extends react.Component {
                         </div>
                         <div>
 
-                        {this.state.loading ? <h1>...</h1> :
+                        {this.state.loading ? <span>...</span> :
                           this.state.waterFlowData.feeds.map((item) => (<div>
                           <span className="sensor_value">{item.field2} m/s</span>
                         </div>
@@ -280,13 +280,35 @@ class Dashboard extends react.Component {
                     </div>
                     </Col>
                   </Row>
-                 
-                    <Row>
-                      <Col md="12" xs="7">
-                        <div class="blobRed">Warning : Sensors data are not normal</div>
-                        <br/><br/>
-                      </Col>
-                    </Row>
+                  {this.state.loading ? 
+                            <Row>
+                              <Col md="12" xs="7">
+                                <div class="blobGreen">Sensors data are normal</div>
+                                <br/><br/>
+                              </Col>
+                            </Row> 
+                          :
+                          this.state.waterLevelData.feeds.map((item) => (<div>
+                          {item.field1 < 0.50 || item.field2 < 5 ? 
+                            <Row>
+                              <Col md="12" xs="7">
+                                <div class="blobGreen">Sensors data is normal</div>
+                                <br/><br/>
+                              </Col>
+                            </Row>
+                            :
+                            
+                            <Row>
+                            <Col md="12" xs="7">
+                              <div class="blobRed">Warning : Sensors data is not normal !</div>
+                              <br/><br/>
+                            </Col>
+                          </Row>
+                          }
+                          
+                        </div>
+                        ))
+                    }
                       
                 </CardBody>
               </Card>

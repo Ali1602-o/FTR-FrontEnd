@@ -53,13 +53,16 @@
 	animation: pulse1 2s infinite;
 }
 .blobGreen {
-	background: #52C458;
-	border-radius: 10%;
-	margin:10px;
+  background: #52C458;
+	border-radius: 10px;
+  color:white;
+  font-size: large;
+  margin: 0 auto;
+  padding-top: 33px;
 	height: 100px;
-	width: 100px;
-
-	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	width: 400px;
+  text-align: center;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
 }
 
 @keyframes pulse1 {
